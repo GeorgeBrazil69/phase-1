@@ -37,28 +37,19 @@ export const server = http.createServer(async (req, res) => {
   if (production) res.setHeader('Strict-Transport-Security', 'max-age=31536000');
   try {
     const path = new URL(req.url, 'http://localhost').pathname;
-    const host = (req.headers.host || '').split(':')[0];
     const brokerTrusted = process.env.BROKER_SECRET && equal(req.headers['x-still-broker-secret'], process.env.BROKER_SECRET);
-    const site = brokerTrusted && req.headers['x-still-site'] === 'decoder' ? 'decoder' : process.env.APP_ROLE || (host === process.env.DECODER_HOST ? 'decoder' : host === process.env.ENCODER_HOST ? 'encoder' : 'combined');
+    const site = brokerTrusted && req.headers['x-still-site'] === 'decoder' ? 'decoder' : 'encoder';
     if (!path.startsWith('/api/')) {
       if (req.method !== 'GET') return reply(res, 405, { error: 'Method not allowed' });
-      const file = ({ '/': 'index.html', '/studio': 'index.html', '/collection': 'index.html', '/style.css': 'style.css', '/app.js': 'app.js', '/codec.js': 'codec.js', '/veil.js': 'veil.js', '/VeilDrop-Offline.html': 'VeilDrop-Offline.html' })[path];
+      const file = ({ '/': 'index.html', '/studio': 'index.html', '/style.css': 'style.css', '/app.js': 'app.js', '/common.js': 'common.js', '/codec.js': 'codec.js', '/veil.js': 'veil.js', '/offline.html': 'VeilDrop-Encoder-Offline.html' })[path];
       if (!file) return reply(res, 404, { error: 'Not found' });
       let content = await readFile(root + file);
       if (file === 'index.html') content = Buffer.from(content.toString().replace('<body>', `<body data-site="${site}">`));
       const ext = file.slice(file.lastIndexOf('.'));
-      if (file === 'VeilDrop-Offline.html') res.setHeader('Content-Disposition', 'attachment; filename=VeilDrop.html');
+      if (file === 'VeilDrop-Encoder-Offline.html') res.setHeader('Content-Disposition', 'attachment; filename=VeilDrop-Encoder-Offline.html');
       res.writeHead(200, { 'Content-Type': types[ext] }); return res.end(content);
     }
     const { ip, zone } = identity(req);
-    if (process.env.APP_ROLE === 'decoder' && process.env.BROKER_ORIGIN) {
-      if (!process.env.BROKER_SECRET) return reply(res, 503, { error: 'The key broker connection is not configured.' });
-      if (!['/api/context', '/api/login', '/api/logout', '/api/open', '/api/heartbeat'].includes(path)) return reply(res, 403, { error: 'Use the encoder website to create cards.' });
-      const payload = req.method === 'POST' ? JSON.stringify(await body(req)) : undefined;
-      const upstream = await fetch(new URL(path, process.env.BROKER_ORIGIN), { method: req.method, headers: { 'Content-Type': 'application/json', 'x-still-broker-secret': process.env.BROKER_SECRET, 'x-still-site': 'decoder', 'x-still-client-ip': ip, 'x-still-timezone': zone || '', Origin: req.headers.origin || '', Cookie: req.headers.cookie || '' }, body: payload, redirect: 'error', signal: AbortSignal.timeout(10000) });
-      const setCookie = upstream.headers.get('set-cookie'); if (setCookie) res.setHeader('Set-Cookie', setCookie);
-      res.writeHead(upstream.status, { 'Content-Type': 'application/json' }); return res.end(await upstream.text());
-    }
     if (req.method === 'GET' && path === '/api/context') return reply(res, 200, { timezone: zone, configured: !!zone });
     if (req.method !== 'POST') return reply(res, 405, { error: 'Method not allowed' });
     const origin = req.headers.origin;
