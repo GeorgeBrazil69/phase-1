@@ -47,6 +47,7 @@ export const server = http.createServer(async (req, res) => {
       let content = await readFile(root + file);
       if (file === 'index.html') content = Buffer.from(content.toString().replace('<body>', `<body data-site="${site}">`));
       const ext = file.slice(file.lastIndexOf('.'));
+      if (file === 'VeilDrop-Offline.html') res.setHeader('Content-Disposition', 'attachment; filename=VeilDrop.html');
       res.writeHead(200, { 'Content-Type': types[ext] }); return res.end(content);
     }
     const { ip, zone } = identity(req);
