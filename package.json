@@ -1,0 +1,16 @@
+{
+  "name": "veildrop-encoder",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env encoder.mjs",
+    "test": "node --test test/*.test.mjs",
+    "build": "node build-standalone.mjs",
+    "test:browser": "node test/browser.mjs",
+    "demo": "node demo.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

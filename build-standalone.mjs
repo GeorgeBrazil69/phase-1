@@ -1,0 +1,11 @@
+import { readFile, writeFile } from 'node:fs/promises';
+const read = path => readFile(new URL(path, import.meta.url), 'utf8');
+let html = await read('./public/index.html');
+const css = await read('./public/style.css');
+let codec = await read('./public/codec.js'), veil = await read('./public/veil.js'), app = await read('./public/app.js');
+const makeModule = (source, names) => `(()=>{${source.replace(/export /g, '')}\nreturn {${names}};})()`;
+const imports = `const {b64,wordCount,decrypt,writePayload,readPayload}=${makeModule(codec, 'b64,wordCount,decrypt,writePayload,readPayload')};\nconst {newDescriptor,parseDescriptor,sealVeil,prepareVeil,openVeil,validateVeil,encode64,decode64}=${makeModule(veil, 'newDescriptor,parseDescriptor,sealVeil,prepareVeil,openVeil,validateVeil,encode64,decode64')};\n`;
+app = app.replace(/^import .*;\n/gm, '');
+html = html.replace(/<link rel="stylesheet" href="\/style.css">/, `<style>${css}</style>`).replace(/<script type="module" src="\/app.js"><\/script>/, `<script type="module">${imports}${app}</script>`).replace('<body>', '<body data-standalone="true">');
+await writeFile(new URL('./public/VeilDrop-Offline.html', import.meta.url), html);
+console.log('Standalone offline app built.');

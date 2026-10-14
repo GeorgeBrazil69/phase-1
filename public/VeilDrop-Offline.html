@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Still — a studio for fleeting correspondence."><title>VeilDrop — Fleeting correspondence</title><style>
+:root{--bg:#f3f0e8;--surface:#eae6dc;--ink:#242520;--muted:#77776b;--line:#cfcdbf;--accent:#e45c32;--blue:#e45c32;--serif:Georgia,'Times New Roman',serif;--sans:Arial,Helvetica,sans-serif;--mono:'Courier New',monospace;color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);transition:background .3s,color .3s}body.terminal{--bg:#070c10;--surface:#0d1720;--ink:#dce8e7;--muted:#779597;--line:#1b3845;--accent:#a9ff36;--blue:#36d8ff;--serif:'Courier New',monospace;--sans:'Courier New',monospace;color-scheme:dark;background-image:linear-gradient(#36d8ff05 1px,transparent 1px),linear-gradient(90deg,#36d8ff05 1px,transparent 1px);background-size:40px 40px}button,input,textarea{font:inherit}button,a,label{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--blue);outline-offset:5px}button{border:0;background:none;color:inherit}a{color:inherit;text-decoration:none}[hidden]{display:none!important}.theme-switch{position:absolute;top:3px;left:50%;transform:translateX(-50%);height:30px;width:44px;font-size:15px;color:var(--muted);opacity:.45;z-index:3}.theme-switch:hover,.theme-switch:focus-visible{opacity:1;color:var(--accent)}header{height:110px;margin:0 5%;display:flex;align-items:center;border-bottom:1px solid var(--line);gap:40px}.wordmark{font-size:49px;letter-spacing:-4px;font-weight:700}.wordmark span{vertical-align:top;font-size:12px;letter-spacing:0;margin-left:6px;position:relative;top:13px}.header-note{font:10px var(--mono);letter-spacing:1px;max-width:150px;line-height:1.6}nav{margin-left:auto;display:flex;gap:35px}nav button{font-size:12px;padding:12px 0}nav span{margin-left:10px;color:var(--accent)}main{max-width:1600px;margin:auto}.home{padding:50px 5% 0;display:grid;grid-template-columns:1fr 1fr;gap:30px 6%;position:relative}.eyebrow{font:10px var(--mono);letter-spacing:1.2px;display:flex;align-items:center;gap:10px}.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent)}h1{font-size:clamp(68px,7.8vw,130px);font-weight:400;letter-spacing:-6px;line-height:.98;margin:45px 0 25px}em{font-family:var(--serif);font-weight:400;color:var(--accent)}.hero-copy>p{font-size:17px;color:var(--muted);line-height:1.65;margin-bottom:32px}.primary{background:var(--ink);color:var(--bg);padding:18px 23px;font-size:13px;display:inline-flex;justify-content:space-between;align-items:center;gap:40px;transition:transform .2s,background .2s;border:1px solid transparent}.primary:hover{background:var(--accent);transform:translateY(-2px)}.primary:disabled{opacity:.5;cursor:wait;transform:none}.primary span{font-size:20px}.edition{font:9px var(--mono);letter-spacing:1px;margin-top:60px;color:var(--muted)}.hero-art{position:relative;padding-top:4px;min-width:0}.hero-art canvas{width:100%;height:590px;object-fit:cover;display:block}.art-caption{display:flex;justify-content:space-between;margin-top:14px;font:9px var(--mono);letter-spacing:1px}.art-tag{position:absolute;bottom:65px;left:-25px;background:var(--bg);padding:25px 32px;font:italic 27px var(--serif);line-height:1.25;box-shadow:0 10px 35px #0001}.bottom-caption{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:25px 0;margin-top:20px;font:9px var(--mono);letter-spacing:1px;color:var(--muted)}footer{display:flex;justify-content:space-between;padding:30px 5%;font:9px var(--mono);letter-spacing:.7px;color:var(--muted)}.workspace{padding:45px 5% 30px}.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}h2{font-size:clamp(40px,5vw,70px);line-height:1.05;letter-spacing:-3px;font-weight:400;margin:24px 0 0}.section-heading>p{font-size:14px;color:var(--muted);line-height:1.6}.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.cover-panel canvas{width:100%;max-height:560px;object-fit:cover;display:block}.cover-tools{display:flex;justify-content:space-between;padding:18px 0;font:11px var(--mono)}.file-label{cursor:pointer}.compose-panel{padding:25px 0;min-width:0}.panel-top{display:flex;justify-content:space-between;font:10px var(--mono);letter-spacing:1px;margin-bottom:36px}.compose-panel>label,.access-panel>label{font-size:19px;display:block;margin-bottom:20px}textarea{resize:none;width:100%;height:225px;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font-family:var(--serif);font-size:24px;line-height:1.5;padding:10px 0}textarea::placeholder{color:var(--muted);opacity:.65}textarea:disabled{opacity:.4}.message-meta{display:flex;justify-content:space-between;font:10px var(--mono);margin-top:16px;color:var(--muted)}.fine-rule{height:1px;background:var(--line);margin:30px 0}.helper{font-size:12px;line-height:1.7;color:var(--muted);max-width:430px}.wide{width:100%;margin-top:18px}.session-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:22px;margin-top:30px;font:9px var(--mono);color:var(--muted)}.session-footer button{white-space:nowrap;color:var(--ink)}.deleted{font:22px var(--mono);letter-spacing:3px;color:var(--accent);margin-top:24px}.deleted span{display:block;letter-spacing:0;font-size:10px;color:var(--muted);margin-top:10px}.text-button{font-size:12px;text-decoration:underline;padding:15px 0}.access-panel{max-width:540px;border:1px solid var(--line);padding:35px;margin:50px auto 80px;background:var(--surface)}.password-row{display:flex;gap:12px}.password-row input{width:100%;min-width:0;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:15px 0;font-size:21px}.dropzone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed var(--line);background:var(--surface);height:320px;gap:20px;cursor:pointer}.dropzone strong{font:32px var(--serif)}.dropzone>span:last-of-type{font:12px var(--mono);color:var(--muted)}.upload-symbol{font-size:35px;color:var(--accent)}#reader{max-width:960px;margin:auto}.reader-toolbar{display:flex;justify-content:space-between;font:11px var(--mono);padding:20px 0}#reveal-surface{position:relative;width:100%;height:420px;touch-action:none;user-select:none;-webkit-user-select:none;background:var(--surface);border:1px solid var(--line);cursor:crosshair;overflow:hidden}#reveal-canvas{display:block;width:100%;height:100%;pointer-events:none}#reader-instruction{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;pointer-events:none}#reader-instruction>span{font-size:48px;color:var(--accent)}#reader-instruction strong{font:28px var(--serif)}#reader-instruction small{text-align:center;line-height:1.8;color:var(--muted)}.progress-track{height:2px;background:var(--line)}#progress{height:100%;background:var(--accent);width:100%}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:16px 22px;max-width:90vw;width:max-content;font-size:13px;box-shadow:0 10px 40px #0003;z-index:10}.terminal .wordmark{letter-spacing:-3px;color:var(--accent)}.terminal .wordmark:before{content:'>_';font-size:25px;letter-spacing:-3px;margin-right:15px;color:var(--blue)}.terminal h1{font-size:clamp(52px,6vw,94px);letter-spacing:-5px;line-height:1.1}.terminal h1 em,.terminal h2 em{font-style:normal;color:var(--blue)}.terminal .primary{background:var(--accent);color:#07100b;border-color:var(--accent);box-shadow:0 0 20px #a9ff3610}.terminal .primary:hover{background:var(--blue);border-color:var(--blue)}.terminal .hero-art{border:1px solid var(--line);padding:12px}.terminal .hero-art canvas{filter:hue-rotate(115deg) saturate(.8) brightness(.7)}.terminal .art-tag{border:1px solid var(--blue);color:var(--blue);font-size:20px;font-style:normal;background:#071016ed}.terminal .eyebrow,.terminal .panel-top{color:var(--accent)}.terminal .cover-panel,.terminal .compose-panel{border:1px solid var(--line);padding:20px}.terminal textarea{font-family:var(--mono);font-size:19px}.terminal .hero-art:before{content:'SIGNAL / 001';position:absolute;top:25px;left:25px;z-index:1;font:10px var(--mono);color:var(--accent);letter-spacing:2px}@media(max-width:760px){header{height:90px;gap:15px}.header-note{display:none}nav{gap:20px}.wordmark{font-size:40px}.home{padding-top:30px;grid-template-columns:1fr}.hero-copy{padding-bottom:15px}h1{font-size:80px;margin-top:30px;letter-spacing:-4px}.hero-art canvas{height:420px}.art-tag{left:10px;bottom:50px;font-size:23px}.edition{margin-top:30px}.bottom-caption span:last-child,footer span:last-child{display:none}.editor-grid{grid-template-columns:1fr;gap:20px}.section-heading>p{display:none}.cover-panel canvas{height:310px}.compose-panel{padding-top:15px}.workspace{padding-top:30px}.access-panel{padding:25px;margin:30px auto}.session-footer{font-size:8px}#reveal-surface{height:460px}.terminal h1{font-size:61px}.terminal .hero-art:before{top:25px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}} 
+
+.mode-picker{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}.mode-choice{border:1px solid var(--line);padding:16px;text-align:left;font:12px var(--mono)}.mode-choice span{display:block;font-size:10px;color:var(--muted);margin-top:8px}.mode-choice.selected{border-color:var(--accent);background:var(--surface);color:var(--accent)}.credential-box{border:1px solid var(--line);padding:20px;margin:24px 0}.credential-heading{display:flex;justify-content:space-between;font:9px var(--mono);color:var(--muted)}.credential-actions{display:flex;justify-content:space-between;gap:10px;font:10px var(--mono);margin:20px 0;color:var(--blue)}.credential-box label[for],.access-panel label[for]{display:block;font-size:13px;margin:18px 0 10px}.credential-box input,.access-panel>input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);padding:12px 0;font:16px var(--mono);color:var(--ink)}.credential-box .helper{font-size:10px}.format-picker{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;font:10px var(--mono)}select{background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:10px;font:11px var(--mono)}#file-compose{padding:20px 0;display:flex;gap:15px;flex-wrap:wrap;align-items:center}.file-input-label{font:12px var(--mono);color:var(--blue);display:block;padding:12px 0}.wordmark span{font:8px var(--mono);letter-spacing:1px;top:20px}.terminal .wordmark span{color:var(--blue)}#reader:not([hidden]){margin-top:30px}#login{margin-bottom:30px}.compose-panel>label{font-size:18px}#file-result h3{overflow-wrap:anywhere}#download[aria-disabled=true]{pointer-events:none;opacity:.5}@media(max-width:760px){.credential-actions{flex-wrap:wrap}.mode-choice{padding:12px}.format-picker{flex-wrap:wrap}}
+
+.offline-delete-control{padding:16px 0;font:11px var(--mono);color:var(--blue)}.offline-delete-control .helper{font-family:var(--sans);font-size:11px;max-width:600px}#delete-folder-files{display:flex;gap:15px;align-items:center;flex-wrap:wrap}#delete-source-name{max-width:100%;min-width:0}@media print{body{display:none!important}}
+</style><script type="module">const {b64,wordCount,decrypt,writePayload,readPayload}=(()=>{const encoder = new TextEncoder();
+const decoder = new TextDecoder('utf-8', { fatal: true });
+const b64 = bytes => btoa(String.fromCharCode(...bytes));
+const unb64 = str => Uint8Array.from(atob(str), c => c.charCodeAt(0));
+const wordCount = text => text.trim().split(/\s+/u).filter(Boolean).length;
+const MAGIC = [83, 84, 73, 76, 76, 1];
+function writePayload(image, object) {
+  const bytes = encoder.encode(JSON.stringify(object));
+  const header = new Uint8Array(10); header.set(MAGIC); new DataView(header.buffer).setUint32(6, bytes.length);
+  const payload = new Uint8Array(header.length + bytes.length); payload.set(header); payload.set(bytes, header.length);
+  if (payload.length * 8 > image.data.length / 4 * 3) throw new Error('Choose a larger cover image.');
+  let bit = 0;
+  for (let i = 0; i < image.data.length && bit < payload.length * 8; i++) {
+    if (i % 4 === 3) continue;
+    image.data[i] = (image.data[i] & 254) | ((payload[bit >> 3] >> (7 - (bit & 7))) & 1); bit++;
+  }
+  return image;
+}
+function readPayload(image) {
+  const capacity = Math.floor(image.data.length / 4 * 3 / 8);
+  if (capacity < 10) throw new Error('This image does not contain a Still card.');
+  function read(n) { const out = new Uint8Array(n); let bit = 0; for (let i = 0; bit < n * 8; i++) { if (i % 4 === 3) continue; out[bit >> 3] |= (image.data[i] & 1) << (7 - (bit & 7)); bit++; } return out; }
+  const header = read(10); if (MAGIC.some((v, i) => v !== header[i])) throw new Error('This image does not contain a Still card. Send the original PNG file without resizing.');
+  const size = new DataView(header.buffer).getUint32(6); if (!size || size > capacity - 10 || size > 17000000) throw new Error('The card is damaged.');
+  const value = JSON.parse(decoder.decode(read(size + 10).subarray(10)));
+  if (value.format === 'VeilDrop' && value.version === 2) return value;
+  if (value.v !== 1 || typeof value.id !== 'string' || !/^[A-Za-z0-9_-]{32}$/.test(value.id) || typeof value.iv !== 'string' || typeof value.ciphertext !== 'string') throw new Error('The card is damaged.');
+  if (unb64(value.iv).length !== 12 || unb64(value.ciphertext).length < 16) throw new Error('The card is damaged.');
+  return value;
+}
+async function encrypt(text, duration) {
+  const bytes = encoder.encode(JSON.stringify({ text, duration }));
+  const key = crypto.getRandomValues(new Uint8Array(32)); const iv = crypto.getRandomValues(new Uint8Array(12));
+  try { const imported = await crypto.subtle.importKey('raw', key, 'AES-GCM', false, ['encrypt']);
+    const ciphertext = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, imported, bytes));
+    return { key, iv: b64(iv), ciphertext: b64(ciphertext) };
+  } finally { bytes.fill(0); }
+}
+async function decrypt(payload, encodedKey) {
+  const bytes = unb64(encodedKey);
+  try { const key = await crypto.subtle.importKey('raw', bytes, 'AES-GCM', false, ['decrypt']);
+    const plain = new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(payload.iv) }, key, unb64(payload.ciphertext)));
+    try { return JSON.parse(decoder.decode(plain)); } finally { plain.fill(0); }
+  } finally { bytes.fill(0); }
+}
+
+return {b64,wordCount,decrypt,writePayload,readPayload};})();
+const {newDescriptor,parseDescriptor,sealVeil,prepareVeil,openVeil,validateVeil,encode64,decode64}=(()=>{const encoder = new TextEncoder();
+const ITERATIONS = 800000;
+const encode64 = bytes => { let s = ''; for (let i = 0; i < bytes.length; i += 8192) s += String.fromCharCode(...bytes.subarray(i, i + 8192)); return btoa(s); };
+const decode64 = text => { if (typeof text !== 'string' || text.length > 32000000 || !/^[A-Za-z0-9+/]*={0,2}$/.test(text)) throw new Error('Invalid encoded data.'); return Uint8Array.from(atob(text), c => c.charCodeAt(0)); };
+async function fingerprint(bytes) { return [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(b => b.toString(16).padStart(2, '0')).join(''); }
+async function newDescriptor() {
+  const key = crypto.getRandomValues(new Uint8Array(32));
+  return { key, file: { format: 'VeilDrop descriptor', version: 1, key: encode64(key), fingerprint: await fingerprint(key) } };
+}
+async function parseDescriptor(value) {
+  if (value?.format !== 'VeilDrop descriptor' || value.version !== 1) throw new Error('Choose a valid VeilDrop key file.');
+  const key = decode64(value.key);
+  if (key.length !== 32 || value.fingerprint !== await fingerprint(key)) { key.fill(0); throw new Error('The key file is invalid or damaged.'); }
+  return key;
+}
+function header(packageValue) {
+  const { format, version, mode, kind, salt, iv, fingerprint, kdf } = packageValue;
+  return encoder.encode(JSON.stringify({ format, version, mode, kind, salt, iv, fingerprint, kdf }));
+}
+function validate(value) {
+  if (value?.format !== 'VeilDrop' || value.version !== 2 || !['offline', 'timed'].includes(value.mode) || !['text', 'file'].includes(value.kind)) throw new Error('Unsupported VeilDrop package.');
+  if (value.mode === 'timed' && !/^[A-Za-z0-9_-]{32}$/.test(value.id || '')) throw new Error('Invalid expiring card.');
+  if (value.kdf !== 'PBKDF2-SHA256-800000+HKDF-SHA256' || !/^[a-f0-9]{64}$/.test(value.fingerprint || '')) throw new Error('Invalid encryption parameters.');
+  const salt = decode64(value.salt), iv = decode64(value.iv), cipher = decode64(value.ciphertext);
+  if (salt.length !== 32 || iv.length !== 12 || cipher.length < 16 || cipher.length > 17000000) throw new Error('Invalid package size or parameters.');
+  return { salt, iv, cipher };
+}
+async function derive(descriptor, passphrase, salt, serverSecret, usage, preparedStretch) {
+  if (!(descriptor instanceof Uint8Array) || descriptor.length !== 32) throw new Error('A 256-bit key file is required.');
+  if (typeof passphrase !== 'string' || passphrase.length < 12 || passphrase.length > 1024) throw new Error('Use a passphrase of 12–1024 characters.');
+  if (serverSecret && serverSecret.length !== 32) throw new Error('Invalid one-time secret.');
+  const passwordBytes = encoder.encode(passphrase.normalize('NFC'));
+  const input = new Uint8Array(serverSecret ? 64 : 32); input.set(descriptor); if (serverSecret) input.set(serverSecret, 32);
+  let stretched;
+  try {
+    if (preparedStretch) stretched = new Uint8Array(preparedStretch);
+    else {
+      const password = await crypto.subtle.importKey('raw', passwordBytes, 'PBKDF2', false, ['deriveBits']);
+      stretched = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: ITERATIONS }, password, 256));
+    }
+    const material = await crypto.subtle.importKey('raw', input, 'HKDF', false, ['deriveKey']);
+    return await crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-256', salt: stretched, info: encoder.encode(`VeilDrop/v2/${serverSecret ? 'timed' : 'offline'}/AES-256-GCM`) }, material, { name: 'AES-GCM', length: 256 }, false, [usage]);
+  } finally { passwordBytes.fill(0); input.fill(0); stretched?.fill(0); }
+}
+async function sealVeil(content, descriptor, passphrase, mode) {
+  if (!['offline', 'timed'].includes(mode)) throw new Error('Select a sharing mode.');
+  if (content.kind === 'file' && mode !== 'offline') throw new Error('Files use offline sharing; the expiring viewer is for text.');
+  const salt = crypto.getRandomValues(new Uint8Array(32)), iv = crypto.getRandomValues(new Uint8Array(12));
+  const secret = mode === 'timed' ? crypto.getRandomValues(new Uint8Array(32)) : null;
+  const envelope = { format: 'VeilDrop', version: 2, mode, kind: content.kind, salt: encode64(salt), iv: encode64(iv), fingerprint: await fingerprint(descriptor), kdf: 'PBKDF2-SHA256-800000+HKDF-SHA256' };
+  const plain = encoder.encode(JSON.stringify(content));
+  try {
+    const key = await derive(descriptor, passphrase, salt, secret, 'encrypt');
+    envelope.ciphertext = encode64(new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv, additionalData: header(envelope) }, key, plain)));
+    return { envelope, secret };
+  } catch (error) { secret?.fill(0); throw error; } finally { plain.fill(0); }
+}
+async function prepareVeil(value, descriptor, passphrase) {
+  const parsed = validate(value);
+  if (await fingerprint(descriptor) !== value.fingerprint) throw new Error('This key file belongs to a different conversation.');
+  // The expensive password stretch runs before timed access starts, keeping the viewing window useful.
+  if (typeof passphrase !== 'string' || passphrase.length < 12 || passphrase.length > 1024) throw new Error('Enter the original passphrase (12–1024 characters).');
+  const bytes = encoder.encode(passphrase.normalize('NFC'));
+  try { const password = await crypto.subtle.importKey('raw', bytes, 'PBKDF2', false, ['deriveBits']);
+    parsed.stretched = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: parsed.salt, iterations: ITERATIONS }, password, 256));
+    return parsed;
+  } finally { bytes.fill(0); }
+}
+async function openVeil(envelope, descriptor, passphrase, secret = null, prepared = null) {
+  const material = prepared || await prepareVeil(envelope, descriptor, passphrase);
+  const { salt, iv, cipher } = material;
+  if ((envelope.mode === 'timed') !== !!secret) { material.stretched?.fill(0); throw new Error('This message needs its one-time access secret.'); }
+  try {
+    const key = await derive(descriptor, passphrase, salt, secret, 'decrypt', material.stretched);
+    const plain = new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv, additionalData: header(envelope) }, key, cipher));
+    try { const content = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(plain));
+      if (content.kind !== envelope.kind) throw new Error('Payload mismatch.');
+      if (content.kind === 'text' && (typeof content.text !== 'string' || content.text.length > 12000 || !Number.isInteger(content.duration))) throw new Error('Invalid message.');
+      if (content.kind === 'file' && (typeof content.name !== 'string' || typeof content.mime !== 'string' || typeof content.data !== 'string' || decode64(content.data).length > 12000000)) throw new Error('Invalid file.');
+      return content;
+    } finally { plain.fill(0); }
+  } catch (error) { if (error.name === 'OperationError') throw new Error('The passphrase is incorrect or the encrypted file was altered.'); throw error; } finally { material.stretched?.fill(0); }
+}
+function validateVeil(value) { validate(value); return value; }
+
+return {newDescriptor,parseDescriptor,sealVeil,prepareVeil,openVeil,validateVeil,encode64,decode64};})();
+const $ = id => document.getElementById(id);
+let theme = 'gallery', authenticated = false, sealing = false, epoch = 0;
+let downloadURL = null, coverBitmap = null, artSeed = Math.random();
+let sourceDirectory = null, sourceName = null, sourceDigest = null, pendingDirectory = null, fileEraseTimer = null;
+const watermark = [...crypto.getRandomValues(new Uint8Array(3))].map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+let mode = 'timed', encoderDescriptor = null, decoderDescriptor = null, secretFile = null, prepared = null, openingPassphrase = '', decryptedFileURL = null;
+const standalone = document.body.dataset.standalone === 'true';
+let payload = null, readable = null, held = false, opening = false, opened = false;
+let pointer = { x: 0, y: 0 }, deadline = 0, animation = null, lastActivity = performance.now(), notification;
+const surfaces = ['home', 'studio', 'collection'];
+function notify(text) { $('toast').textContent = text; $('toast').hidden = false; clearTimeout(notification); notification = setTimeout(() => { $('toast').hidden = true; $('toast').textContent = ''; }, 6000); }
+async function api(path, data, keepalive = false) {
+  const response = await fetch('/api/' + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), credentials: 'same-origin', cache: 'no-store', keepalive });
+  const value = await response.json(); if (!response.ok) { if (response.status === 401) { authenticated = false; $('login').hidden = false; $('reader').hidden = true; } throw new Error(value.error || 'Unable to complete this action.'); }
+  return value;
+}
+function count() { const words = wordCount($('message').value); $('word-count').textContent = `${words} WORD${words === 1 ? '' : 'S'}`; $('duration').textContent = `${Math.ceil(words / 5) * 2} SECONDS TO READ`; }
+function show(section) {
+  if (section !== 'studio') clearComposer();
+  if (section !== 'collection') clearReader();
+  surfaces.forEach(id => { $(id).hidden = id !== section; });
+  if (!standalone) history.replaceState(null, '', ({ home: '/', studio: '/studio', collection: '/collection' })[section]); window.scrollTo(0, 0); lastActivity = performance.now();
+}
+function clearComposer() {
+  $('message').value = ''; $('message').disabled = false; $('message').hidden = false; $('seal').hidden = false; $('sealed').hidden = true;
+  $('seal-passphrase').value = ''; secretFile = null; $('secret-file').value = ''; $('secret-file-status').textContent = 'Optional · up to 12 MB'; $('text-only').hidden = true;
+  $('download').removeAttribute('href'); if (downloadURL) URL.revokeObjectURL(downloadURL); downloadURL = null; count();
+}
+function blank() {
+  const canvas = $('reveal-canvas'), ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function clearReader() {
+  clearTimeout(fileEraseTimer); fileEraseTimer = null; sourceDirectory = null; sourceName = null; sourceDigest = null; pendingDirectory = null; $('delete-folder-files').hidden = true; $('delete-source-name').replaceChildren();
+  epoch++; prepared?.stretched?.fill(0); prepared = null; decoderDescriptor?.fill(0); decoderDescriptor = null; openingPassphrase = '';
+  $('open-passphrase').value = ''; $('decoder-key-upload').value = ''; $('decoder-key-status').textContent = 'Key file required';
+  $('unlock-panel').hidden = true; $('file-result').hidden = true; $('save-file').removeAttribute('href'); if (decryptedFileURL) URL.revokeObjectURL(decryptedFileURL); decryptedFileURL = null;
+  readable = null; payload = null; held = false; opened = false; opening = false; deadline = 0;
+  cancelAnimationFrame(animation); animation = null; blank();
+  $('card-upload').value = ''; $('dropzone').hidden = false; $('reveal-panel').hidden = true; $('reader-instruction').hidden = false;
+  $('progress').style.width = '100%'; $('remaining').textContent = '—'; $('reader-state').textContent = 'READY / HOLD TO REVEAL';
+}
+function endReading(label = 'THIS MOMENT HAS PASSED') {
+  readable = null; payload = null; openingPassphrase = ''; prepared?.stretched?.fill(0); prepared = null; decoderDescriptor?.fill(0); decoderDescriptor = null; held = false; blank(); cancelAnimationFrame(animation); animation = null;
+  $('reader-state').textContent = label; $('remaining').textContent = '0.0s'; $('progress').style.width = '0%';
+  $('reader-instruction').hidden = false; $('reader-instruction').querySelector('strong').textContent = 'This moment has passed.';
+  $('reader-instruction').querySelector('small').textContent = 'This viewing session has ended.';
+}
+function logout() {
+  const wasAuthenticated = authenticated;
+  encoderDescriptor?.fill(0); encoderDescriptor = null; $('encoder-key-status').textContent = 'REQUIRED'; $('encoder-key-upload').value = '';
+  epoch++; clearComposer(); clearReader(); authenticated = false; $('password').value = '';
+  $('login').hidden = standalone; $('reader').hidden = false; coverBitmap?.close(); coverBitmap = null;
+  $('cover-upload').value = ''; drawArt($('cover')); show('home');
+  if (wasAuthenticated && !standalone) api('logout', {}, true).catch(() => {});
+}
+function drawArt(canvas) {
+  const c = canvas.getContext('2d'), w = canvas.width, h = canvas.height;
+  const t = artSeed;
+  const sky = c.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#506c74'); sky.addColorStop(.48, '#c6b493'); sky.addColorStop(1, '#ebe0c4'); c.fillStyle = sky; c.fillRect(0, 0, w, h);
+  const sunX = w * (.3 + t * .3), sunY = h * .25;
+  const halo = c.createRadialGradient(sunX, sunY, 20, sunX, sunY, w * .38); halo.addColorStop(0, '#f4eacbbb'); halo.addColorStop(1, '#f4eacb00'); c.fillStyle = halo; c.fillRect(0, 0, w, h);
+  c.fillStyle = '#f1d5a4'; c.beginPath(); c.arc(sunX, sunY, w * .095, 0, Math.PI * 2); c.fill();
+  for (let layer = 0; layer < 5; layer++) {
+    const y = h * (.48 + layer * .115); c.beginPath(); c.moveTo(0, h);
+    c.lineTo(0, y); for (let x = 0; x <= w + 20; x += 20) c.lineTo(x, y + Math.sin(x / w * 4 + layer * .9 + t * 4) * h * .07 + Math.cos(x / w * 8 + layer) * h * .018);
+    c.lineTo(w, h); c.closePath(); c.fillStyle = ['#657d7b', '#3e6265', '#264b50', '#163b42', '#102e35'][layer]; c.fill();
+  }
+  let s = Math.floor(t * 999999) || 1; c.globalAlpha = .055;
+  for (let i = 0; i < 17000; i++) { s = (s * 16807) % 2147483647; const x = s % w; s = (s * 16807) % 2147483647; c.fillStyle = i % 2 ? '#fff' : '#000'; c.fillRect(x, s % h, 1, 1); }
+  c.globalAlpha = 1;
+}
+function paintCover() {
+  if (!coverBitmap) return drawArt($('cover'));
+  const canvas = $('cover'), c = canvas.getContext('2d'); const factor = Math.max(canvas.width / coverBitmap.width, canvas.height / coverBitmap.height);
+  c.fillStyle = '#f3f0e8'; c.fillRect(0, 0, canvas.width, canvas.height);
+  c.drawImage(coverBitmap, (canvas.width - coverBitmap.width * factor) / 2, (canvas.height - coverBitmap.height * factor) / 2, coverBitmap.width * factor, coverBitmap.height * factor);
+}
+async function imageFrom(file, pngOnly = false) {
+  if (!file || file.size > 15000000) throw new Error('Choose an image smaller than 15 MB.');
+  if (pngOnly) { const sig = new Uint8Array(await file.slice(0, 8).arrayBuffer()); if (sig.join(',') !== '137,80,78,71,13,10,26,10') throw new Error('Choose the original PNG file.'); }
+  const bitmap = await createImageBitmap(file, { colorSpaceConversion: 'none', premultiplyAlpha: 'none' });
+  if (bitmap.width * bitmap.height > 20000000) { bitmap.close(); throw new Error('Choose an image under 20 megapixels.'); }
+  return bitmap;
+}
+$('theme-switch').addEventListener('click', () => {
+  theme = theme === 'gallery' ? 'terminal' : 'gallery'; document.body.classList.toggle('terminal', theme === 'terminal');
+  $('footer-mode').textContent = theme === 'terminal' ? 'SIGNAL ACTIVE / EPHEMERAL CHANNEL' : 'A DIFFERENT KIND OF CORRESPONDENCE.';
+});
+$('studio-link').onclick = $('start').onclick = () => show('studio');
+$('collection-link').onclick = () => show('collection');
+$('compose-again').onclick = clearComposer;
+$('message').oninput = count;
+$('new-art').onclick = () => { coverBitmap?.close(); coverBitmap = null; artSeed = Math.random(); paintCover(); };
+$('cover-upload').onchange = async event => {
+  const version = epoch;
+  try { const image = await imageFrom(event.target.files[0]); if (version !== epoch) { image.close(); return; } coverBitmap?.close(); coverBitmap = image; paintCover(); }
+  catch (error) { notify(error.message); } finally { event.target.value = ''; }
+};
+function selectMode(next) {
+  mode = next; $('mode-timed').classList.toggle('selected', mode === 'timed'); $('mode-offline').classList.toggle('selected', mode === 'offline');
+  $('file-compose').hidden = mode !== 'offline'; $('retention-label').textContent = mode === 'timed' ? 'UNOPENED CARDS EXPIRE IN 24 HOURS' : 'OFFLINE / NO SERVER ACCESS REQUIRED';
+  $('mode-description').textContent = mode === 'timed' ? 'Key file + passphrase + one-time server access. The first reveal consumes access.' : 'Key file + passphrase. No content or encryption material is uploaded. The viewer clears automatically; retained copies can be reopened.';
+  if (mode === 'timed') { secretFile = null; $('secret-file').value = ''; $('message').disabled = false; $('text-only').hidden = true; }
+}
+$('mode-timed').onclick = () => selectMode('timed'); $('mode-offline').onclick = () => selectMode('offline');
+async function loadKey(file) { if (!file || file.size > 4096) throw new Error('Choose a small .vkey descriptor file.'); return parseDescriptor(JSON.parse(await file.text())); }
+$('generate-key').onclick = async () => {
+  const version = epoch;
+  try { const generated = await newDescriptor(); if (version !== epoch) { generated.key.fill(0); return; } encoderDescriptor?.fill(0); encoderDescriptor = generated.key;
+    const url = URL.createObjectURL(new Blob([JSON.stringify(generated.file)], { type: 'application/json' }));
+    const a = document.createElement('a'); a.href = url; a.download = 'conversation-' + generated.file.fingerprint.slice(0, 8) + '.vkey'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    $('encoder-key-status').textContent = generated.file.fingerprint.slice(0, 8).toUpperCase(); notify('Key file generated. Keep it separate from your encrypted card.');
+  } catch (error) { notify(error.message); }
+};
+$('encoder-key-upload').onchange = async event => { const version = epoch; try { const key = await loadKey(event.target.files[0]); if (version !== epoch) { key.fill(0); return; } encoderDescriptor?.fill(0); encoderDescriptor = key; $('encoder-key-status').textContent = 'KEY READY'; } catch (error) { notify(error.message); } finally { event.target.value = ''; } };
+$('secret-file').onchange = event => { const file = event.target.files[0]; if (!file) return; if (file.size > 12000000) return notify('Choose a file smaller than 12 MB.'); secretFile = file; $('secret-file-status').textContent = file.name; $('text-only').hidden = false; $('message').value = ''; $('message').disabled = true; $('output-format').value = 'veil'; count(); };
+$('text-only').onclick = () => { secretFile = null; $('secret-file').value = ''; $('secret-file-status').textContent = 'Optional · up to 12 MB'; $('text-only').hidden = true; $('message').disabled = false; };
+$('seal').onclick = async () => {
+  if (sealing) return;
+  const words = wordCount($('message').value), selectedMode = mode;
+  if (!encoderDescriptor) return notify('Generate or choose your conversation key file first.');
+  if (!secretFile && (words < 1 || words > 500)) return notify('Write between 1 and 500 words.');
+  if (!crypto.subtle) return notify('Use HTTPS or open the offline application locally.');
+  const version = epoch; sealing = true; $('seal').disabled = true; $('message').disabled = true;
+  const descriptor = new Uint8Array(encoderDescriptor); let encrypted, fileBytes;
+  try {
+    let content;
+    if (secretFile) { fileBytes = new Uint8Array(await secretFile.arrayBuffer()); content = { kind: 'file', name: secretFile.name, mime: secretFile.type || 'application/octet-stream', data: encode64(fileBytes) }; }
+    else content = { kind: 'text', text: $('message').value, duration: Math.ceil(words / 5) * 2000 };
+    encrypted = await sealVeil(content, descriptor, $('seal-passphrase').value, selectedMode); fileBytes?.fill(0); content = null;
+    if (version !== epoch) return;
+    const envelope = encrypted.envelope;
+    // Generate output before requesting server retention, so a capacity error never consumes or saves access.
+    const output = document.createElement('canvas'); let blob;
+    if ($('output-format').value === 'png') {
+      const canvas = $('cover'), c = canvas.getContext('2d');
+      // Reserve the fixed-size message ID before embedding; no secret goes into the carrier.
+      if (selectedMode === 'timed') envelope.id = 'a'.repeat(32);
+      writePayload(c.getImageData(0, 0, canvas.width, canvas.height), envelope);
+    }
+    if (selectedMode === 'timed') { const result = await api('seal', { key: encode64(encrypted.secret), words }); envelope.id = result.id; encrypted.secret.fill(0); }
+    if (version !== epoch) return;
+    const png = $('output-format').value === 'png';
+    if (png) {
+      const canvas = $('cover'), image = writePayload(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height), envelope);
+      output.width = canvas.width; output.height = canvas.height; output.getContext('2d').putImageData(image, 0, 0);
+      blob = await new Promise(resolve => output.toBlob(resolve, 'image/png')); output.width = output.height = 1;
+    } else blob = new Blob([JSON.stringify(envelope)], { type: 'application/vnd.veildrop+json' });
+    if (!blob) throw new Error('The encrypted package could not be generated.');
+    if (version !== epoch) return;
+    $('message').value = ''; $('seal-passphrase').value = ''; secretFile = null; $('secret-file').value = ''; $('message').hidden = true; $('seal').hidden = true; $('sealed').hidden = false; count();
+    if (downloadURL) URL.revokeObjectURL(downloadURL); downloadURL = URL.createObjectURL(blob); $('download').href = downloadURL; $('download').download = png ? 'veildrop-card.png' : 'veildrop-message.veil'; $('download').textContent = png ? 'Download encrypted PNG ↓' : 'Download encrypted package ↓';
+    notify('Sealed. Original input cleared. Key file and passphrase are required to open it.');
+  } catch (error) { notify(error.message); }
+  finally { descriptor.fill(0); fileBytes?.fill(0); encrypted?.secret?.fill(0); sealing = false; $('seal').disabled = false; if (!$('message').hidden && !secretFile) $('message').disabled = false; }
+};
+$('login').onsubmit = async event => {
+  event.preventDefault(); const version = epoch; const button = $('login').querySelector('button'); button.disabled = true;
+  try { await api('login', { password: $('password').value }); $('password').value = ''; if (version !== epoch) { if (!standalone) api('logout', {}, true).catch(() => {}); return; }
+    authenticated = true; lastActivity = performance.now(); $('login').hidden = true; $('reader').hidden = false;
+  } catch (error) { $('password').value = ''; notify(error.message); } finally { button.disabled = false; }
+};
+async function loadCard(file, deleteSource = null) {
+  clearReader(); const version = epoch;
+  if (deleteSource) { sourceDirectory = deleteSource.directory; sourceName = deleteSource.name; }
+  try {
+    if (!file || file.size > 25000000) throw new Error('Choose a PNG or .veil package smaller than 25 MB.');
+    if (deleteSource) sourceDigest = encode64(new Uint8Array(await crypto.subtle.digest('SHA-256', await file.arrayBuffer())));
+    let extracted;
+    if (file.name.toLowerCase().endsWith('.veil') || file.type === 'application/json' || file.type === 'application/vnd.veildrop+json') extracted = validateVeil(JSON.parse(await file.text()));
+    else { const bitmap = await imageFrom(file, true), canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height; canvas.getContext('2d').drawImage(bitmap, 0, 0); bitmap.close(); extracted = readPayload(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height)); canvas.width = canvas.height = 1; if (extracted.version === 2) validateVeil(extracted); }
+    if (version !== epoch) return;
+    if (deleteSource && extracted.mode !== 'offline') throw new Error('Source auto-delete is only available for offline vault packages.');
+    if (standalone && extracted.mode !== 'offline') throw new Error('Expiring cards must be opened on the online decoder.');
+    payload = extracted; $('dropzone').hidden = true;
+    if (payload.version === 2) {
+      $('unlock-panel').hidden = false; $('package-mode').textContent = payload.mode === 'offline' ? 'VAULT / OFFLINE ACCESS' : 'FLEETING / ONE-TIME ACCESS';
+      $('unlock-help').textContent = payload.mode === 'offline' ? 'No server is contacted. Text clears when its timer expires. Retained copies can still be reopened with their key file and passphrase.' : 'Enter the daily access code above, then provide the key file and original passphrase. The timer starts only when you hold to reveal.';
+      $('reader-retention').textContent = payload.mode === 'offline' ? 'OFFLINE / RETAINED PACKAGES CAN BE REOPENED' : 'ONE MOMENT. ONE OPENING.';
+    } else { if (!authenticated) throw new Error('Enter the daily access code before opening this legacy card.'); $('reveal-panel').hidden = false; }
+    $('reader-instruction').querySelector('strong').textContent = 'Hold to find the words.';
+    $('reader-instruction').querySelector('small').textContent = 'Move your finger. Release to cover. The timer begins on your first hold.';
+  } catch (error) { payload = null; sourceDirectory = null; sourceName = null; $('dropzone').hidden = false; notify(error.message); }
+}
+$('card-upload').onchange = event => loadCard(event.target.files[0]);
+$('choose-delete-folder').onclick = async () => {
+  if (!window.showDirectoryPicker) return notify('This browser cannot delete source files. Use a supported desktop browser, or delete the original manually.');
+  try {
+    const directory = await window.showDirectoryPicker({ id: 'veildrop-source', mode: 'readwrite' });
+    const names = []; for await (const [name, handle] of directory.entries()) { if (handle.kind === 'file' && /\.(veil|png)$/i.test(name)) names.push(name); if (names.length >= 100) break; }
+    if (!names.length) return notify('No PNG or .veil files were found in that folder.');
+    clearReader(); pendingDirectory = directory; names.sort(); for (const name of names) { const option = document.createElement('option'); option.value = name; option.textContent = name; $('delete-source-name').append(option); }
+    $('delete-folder-files').hidden = false;
+  } catch (error) { if (error.name !== 'AbortError') notify('Folder access was not granted.'); }
+};
+$('load-delete-source').onclick = async () => {
+  if (!pendingDirectory) return; const directory = pendingDirectory, name = $('delete-source-name').value;
+  try { const handle = await directory.getFileHandle(name); await loadCard(await handle.getFile(), { directory, name }); } catch { notify('Unable to open the selected file.'); }
+};
+$('decoder-key-upload').onchange = async event => { const version = epoch; try { const key = await loadKey(event.target.files[0]); if (version !== epoch) { key.fill(0); return; } decoderDescriptor?.fill(0); decoderDescriptor = key; $('decoder-key-status').textContent = 'Key file ready'; } catch (error) { notify(error.message); } finally { event.target.value = ''; } };
+$('unlock').onclick = async () => {
+  if (!payload || !decoderDescriptor) return notify('Choose the matching conversation key file.');
+  if (payload.mode === 'timed' && !authenticated) return notify('Enter the daily access code above first.');
+  const version = epoch; $('unlock').disabled = true;
+  try {
+    prepared?.stretched?.fill(0); prepared = await prepareVeil(payload, decoderDescriptor, $('open-passphrase').value);
+    if (version !== epoch) { prepared.stretched.fill(0); prepared = null; return; }
+    openingPassphrase = $('open-passphrase').value; $('open-passphrase').value = '';
+    if (payload.mode === 'offline') {
+      const content = await openVeil(payload, decoderDescriptor, openingPassphrase, null, prepared); prepared = null; openingPassphrase = ''; decoderDescriptor?.fill(0); decoderDescriptor = null;
+      if (version !== epoch) return;
+      if (sourceDirectory && sourceName) {
+        try {
+          const current = await (await sourceDirectory.getFileHandle(sourceName)).getFile();
+          const digest = encode64(new Uint8Array(await crypto.subtle.digest('SHA-256', await current.arrayBuffer())));
+          if (digest !== sourceDigest) throw new Error('File changed');
+          await sourceDirectory.removeEntry(sourceName);
+        } catch { throw new Error('The original could not be deleted. Viewing was stopped; check folder permissions.'); }
+        sourceDirectory = null; sourceName = null; sourceDigest = null; notify('Original encrypted file deleted from the selected folder.');
+      }
+      if (version !== epoch) return;
+      if (content.kind === 'file') {
+        const bytes = decode64(content.data); const blob = new Blob([bytes], { type: 'application/octet-stream' }); bytes.fill(0);
+        if (decryptedFileURL) URL.revokeObjectURL(decryptedFileURL); decryptedFileURL = URL.createObjectURL(blob);
+        $('save-file').href = decryptedFileURL; $('save-file').download = content.name.replace(/[\/\u0000-\u001f]/g, '_').slice(0, 200) || 'decrypted-file';
+        $('decrypted-name').textContent = content.name; $('file-result').hidden = false; $('unlock-panel').hidden = true; payload = null; fileEraseTimer = setTimeout(() => { clearReader(); notify('Decrypted file cleared from this session after 30 seconds.'); }, 30000); return;
+      }
+      if (content.duration !== Math.ceil(wordCount(content.text) / 5) * 2000 || !content.duration) throw new Error('Invalid message lifetime.');
+      readable = content;
+    }
+    $('unlock-panel').hidden = true; $('reveal-panel').hidden = false; $('reader-state').textContent = 'READY / HOLD TO REVEAL';
+  } catch (error) { prepared?.stretched?.fill(0); prepared = null; openingPassphrase = ''; notify(error.message); }
+  finally { $('unlock').disabled = false; }
+};
+function linesFor(ctx, text, width) {
+  const words = text.split(/\s+/u), lines = []; let line = '';
+  for (const word of words) { const next = line ? line + ' ' + word : word;
+    if (ctx.measureText(next).width <= width) { line = next; continue; }
+    if (line) lines.push(line); line = '';
+    // Break unusually long words to keep them reachable on small screens.
+    for (const letter of word) { if (ctx.measureText(line + letter).width > width && line) { lines.push(line); line = ''; } line += letter; }
+  }
+  if (line) lines.push(line); return lines;
+}
+function drawReveal() {
+  if (!readable) return;
+  const surface = $('reveal-surface'), canvas = $('reveal-canvas');
+  const w = surface.clientWidth, scale = Math.min(devicePixelRatio || 1, 2), font = theme === 'terminal' ? '18px monospace' : '20px Georgia';
+  let c = canvas.getContext('2d'); c.font = font; const lines = linesFor(c, readable.text, w - 56);
+  const h = Math.max(420, lines.length * 30 + 80); surface.style.height = h + 'px';
+  const pixelW = Math.round(w * scale), pixelH = Math.round(h * scale);
+  if (canvas.width !== pixelW || canvas.height !== pixelH) { canvas.width = pixelW; canvas.height = pixelH; }
+  c = canvas.getContext('2d'); c.setTransform(scale, 0, 0, scale, 0, 0); c.clearRect(0, 0, w, h);
+  if (!held) return;
+  c.save(); c.beginPath(); c.arc(pointer.x, pointer.y, 62, 0, 2 * Math.PI); c.clip();
+  c.fillStyle = theme === 'terminal' ? '#071016' : '#f3f0e8'; c.fillRect(0, 0, w, h);
+  c.fillStyle = theme === 'terminal' ? '#dcf5ed' : '#242520'; c.font = font; c.textBaseline = 'top';
+  lines.forEach((line, i) => c.fillText(line, 28, 40 + i * 30));
+  c.save(); c.globalAlpha = .15; c.fillStyle = theme === 'terminal' ? '#36d8ff' : '#242520'; c.translate(pointer.x, pointer.y); c.rotate(-Math.PI / 7); c.font = '10px monospace'; c.fillText('VEILDROP / ' + watermark, -50, 22); c.restore(); c.restore();
+  c.strokeStyle = theme === 'terminal' ? '#36d8ff' : '#77776b'; c.lineWidth = 1; c.beginPath(); c.arc(pointer.x, pointer.y, 62, 0, 2 * Math.PI); c.stroke();
+}
+function tick() {
+  if (!readable) return;
+  const remaining = deadline - performance.now(); if (remaining <= 0) return endReading();
+  $('remaining').textContent = (remaining / 1000).toFixed(1) + 's'; $('progress').style.width = Math.max(0, remaining / readable.duration * 100) + '%';
+  drawReveal(); animation = requestAnimationFrame(tick);
+}
+async function beginOpen() {
+  if (!payload || opening || opened) return;
+  if (payload.mode === 'timed' && !authenticated) return;
+  opening = true; opened = true; const version = epoch, start = performance.now();
+  $('reader-state').textContent = 'OPENING / PREPARED ACCESS';
+  let secret;
+  try {
+    let duration;
+    if (payload.mode === 'offline') { duration = readable.duration; payload = null; }
+    else {
+      const access = await api('open', { id: payload.id });
+      if (version !== epoch) return;
+      let decoded;
+      if (payload.version === 2) { secret = decode64(access.key); decoded = await openVeil(payload, decoderDescriptor, openingPassphrase, secret, prepared); prepared = null; }
+      else decoded = await decrypt(payload, access.key);
+      access.key = ''; secret?.fill(0); openingPassphrase = ''; decoderDescriptor?.fill(0); decoderDescriptor = null;
+      if (version !== epoch) return;
+      if (typeof decoded.text !== 'string' || decoded.duration !== access.duration || decoded.duration !== Math.ceil(wordCount(decoded.text) / 5) * 2000) throw new Error('The card failed its integrity check.');
+      readable = decoded; duration = access.duration; payload = null;
+    }
+    deadline = start + duration; $('reader-instruction').hidden = true; $('reader-state').textContent = 'OPEN / THE CLOCK IS RUNNING'; tick();
+  } catch (error) { if (version === epoch) { endReading('UNAVAILABLE'); notify(error.message); } }
+  finally { secret?.fill(0); if (version === epoch) opening = false; }
+}
+const surface = $('reveal-surface');
+function locate(event) { const r = surface.getBoundingClientRect(); pointer = { x: event.clientX - r.left, y: event.clientY - r.top }; }
+surface.onpointerdown = event => { if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return; event.preventDefault(); held = true; locate(event); surface.setPointerCapture(event.pointerId); beginOpen(); drawReveal(); };
+surface.onpointermove = event => { if (held && event.isPrimary) { locate(event); drawReveal(); } };
+function release() { held = false; blank(); }
+surface.onpointerup = surface.onpointercancel = surface.onlostpointercapture = release;
+surface.oncontextmenu = event => event.preventDefault();
+surface.onkeydown = event => { if (event.code === 'Space' || event.code === 'Enter') { event.preventDefault(); held = true; if (!pointer.x) pointer = { x: surface.clientWidth / 2, y: 70 }; beginOpen(); drawReveal(); }
+  else if (held && event.code.startsWith('Arrow')) { event.preventDefault(); pointer.x += event.code === 'ArrowRight' ? 25 : event.code === 'ArrowLeft' ? -25 : 0; pointer.y += event.code === 'ArrowDown' ? 25 : event.code === 'ArrowUp' ? -25 : 0; drawReveal(); } };
+surface.onkeyup = event => { if (event.code === 'Space' || event.code === 'Enter') release(); };
+surface.onblur = release;
+document.querySelectorAll('.exit').forEach(button => button.onclick = logout);
+for (const event of ['pointerdown', 'keydown', 'input']) document.addEventListener(event, () => { lastActivity = performance.now(); }, { passive: true });
+setInterval(() => { if (performance.now() - lastActivity >= 120000 && (!$('home').hidden ? authenticated : true)) { logout(); notify('Session cleared after inactivity.'); } }, 1000);
+setInterval(() => { if (authenticated && performance.now() - lastActivity < 120000) api('heartbeat', {}).catch(() => { logout(); }); }, 45000);
+document.addEventListener('visibilitychange', () => { if (document.hidden) logout(); });
+window.addEventListener('pagehide', () => { clearComposer(); clearReader(); $('password').value = ''; encoderDescriptor?.fill(0); encoderDescriptor = null; if (authenticated && !standalone) navigator.sendBeacon('/api/logout', new Blob(['{}'], { type: 'application/json' })); });
+window.addEventListener('pageshow', event => { if (event.persisted) logout(); });
+window.addEventListener('blur', release);
+window.addEventListener('beforeprint', () => { if (readable) endReading('CLEARED'); });
+document.addEventListener('copy', event => { if (!$('reveal-panel').hidden) { event.preventDefault(); event.clipboardData?.setData('text/plain', ''); } });
+document.addEventListener('keydown', event => { if (event.key === 'PrintScreen' && readable) endReading('CLEARED'); });
+window.addEventListener('resize', () => { if (readable) drawReveal(); });
+drawArt($('hero-canvas')); paintCover();
+if (standalone) { selectMode('offline'); $('mode-timed').hidden = true; $('login').hidden = true; }
+document.querySelector('.wordmark').onclick = event => { event.preventDefault(); show('home'); };
+if (document.body.dataset.site === 'decoder') { $('studio-link').hidden = true; $('start').hidden = true; }
+if (document.body.dataset.site === 'encoder') $('collection-link').hidden = true;
+show(document.body.dataset.site === 'decoder' ? 'collection' : location.pathname === '/collection' ? 'collection' : location.pathname === '/studio' ? 'studio' : 'home');
+</script></head>
+<body data-standalone="true"><button id="theme-switch" class="theme-switch" aria-label="Switch visual theme" title="Change perspective">◐</button>
+<header><a class="wordmark" href="/">veil<span>DROP</span></a><span class="header-note">A SMALL STUDIO FOR PASSING THINGS ON</span><nav><button id="studio-link">Studio <span>↗</span></button><button id="collection-link">Collection <span>↗</span></button></nav></header>
+<main>
+<section id="home" class="home"><div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> IN THE MOMENT. ONLY IN THE MOMENT.</div><h1>Some things<br>are meant<br>to <em>pass.</em></h1><p>Make something beautiful.<br>Leave a little less behind.</p><button id="start" class="primary">Create a card <span>↗</span></button><div class="edition">CORRESPONDENCE STUDIO / VOL. 001</div></div><div class="hero-art"><canvas id="hero-canvas" width="960" height="1200" aria-label="Abstract sunlit landscape artwork"></canvas><div class="art-caption"><span>01 / A MOMENT HELD</span><span>STILL STUDIES</span></div><div class="art-tag">Nothing stays.<br>That’s the beauty.</div></div><div class="bottom-caption"><span>MADE TO BE SHARED. DESIGNED TO BE FLEETING.</span><span>SCROLL LESS. FEEL MORE. ↓</span></div></section>
+<section id="studio" class="workspace" hidden><div class="section-heading"><div><div class="eyebrow">01 / THE STUDIO</div><h2>Say it.<br><em>Then let it go.</em></h2></div><p>A card on the outside.<br>Your words on the inside.</p></div><div class="editor-grid"><div class="cover-panel"><canvas id="cover" width="960" height="1200" aria-label="Your postcard cover"></canvas><div class="cover-tools"><button id="new-art">Another moment ↻</button><label class="file-label">Use your image ↗<input id="cover-upload" type="file" accept="image/png,image/jpeg,image/webp" hidden></label></div></div><div class="compose-panel"><div class="panel-top"><span>PRIVATE CORRESPONDENCE</span><span class="status-dot"></span></div><div class="mode-picker" role="group" aria-label="Sharing mode"><button id="mode-timed" class="mode-choice selected" type="button">01 / Fleeting<span>One opening. Timed access.</span></button><button id="mode-offline" class="mode-choice" type="button">02 / Vault<span>Offline. Timed viewing.</span></button></div>
+<p id="mode-description" class="helper">Key file + passphrase + one-time access. Text clears after sealing.</p>
+<div class="credential-box"><div class="credential-heading"><span>CONVERSATION KEY</span><span id="encoder-key-status">REQUIRED</span></div><div class="credential-actions"><button id="generate-key" type="button">Generate & download ↧</button><label class="file-label">Use existing key ↗<input id="encoder-key-upload" type="file" accept=".vkey,.veilkey,application/json" hidden></label></div><label for="seal-passphrase">Message passphrase</label><input id="seal-passphrase" type="password" autocomplete="off" minlength="12" maxlength="1024" placeholder="At least 12 characters"><p class="helper">Send the key file and passphrase separately from your encrypted card. Both are required.</p></div>
+<label for="message">What would you like to say?</label><textarea id="message" maxlength="12000" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="A thought. A feeling. Something just for them."></textarea><div class="message-meta"><span id="word-count">0 WORDS</span><span id="duration">0 SECONDS TO READ</span></div><div id="file-compose" hidden><label class="file-label file-input-label">Encrypt a file instead ↥<input id="secret-file" type="file" hidden></label><span id="secret-file-status" class="helper">Optional · up to 12 MB</span><button id="text-only" type="button" hidden>Return to text</button></div><div class="format-picker"><label for="output-format">DELIVERY FORMAT</label><select id="output-format"><option value="png">Hidden in PNG artwork</option><option value="veil">Encrypted .veil package</option></select></div><div class="fine-rule"></div><p class="helper">Sealed in your browser. Your words clear after sealing. The original PNG is the card—send it as a file.</p><button id="seal" class="primary wide">Seal this moment <span>↗</span></button><div id="sealed" hidden><div class="deleted">DELETED<span>Original text cleared from this composer.</span></div><a id="download" class="primary wide" download="still-card.png">Download your card <span>↓</span></a><button id="compose-again" class="text-button">Create another card</button></div><div class="session-footer"><span id="retention-label">UNOPENED CARDS EXPIRE IN 24 HOURS</span><button class="exit">Clean & exit ↗</button></div></div></div></section>
+<section id="collection" class="workspace" hidden><div class="section-heading"><div><div class="eyebrow">02 / THE COLLECTION</div><h2>A moment<br><em>just for you.</em></h2></div><p>Some things are better<br>experienced than kept.</p></div><form id="login" class="access-panel"><div class="panel-top"><span>FLEETING MODE / DAILY ACCESS</span><span>●</span></div><label for="password">Your access code</label><div class="password-row"><input id="password" type="password" autocomplete="off" spellcheck="false" required placeholder="Enter code"><button class="primary" type="submit" aria-label="Enter collection">↗</button></div><p class="helper">Required for expiring cards. Offline vault packages need only their key file and passphrase.</p></form><div id="reader"><label id="dropzone" class="dropzone"><span class="upload-symbol">↥</span><strong>Bring your card here.</strong><span>Choose a PNG or .veil package</span><input id="card-upload" type="file" accept="image/png,.veil,application/json" hidden></label><div class="offline-delete-control"><button id="choose-delete-folder" type="button">Open offline & delete original ↗</button><p class="helper">Optional: grant access to its folder. After successful decryption, the original encrypted file is deleted. Copies elsewhere are unaffected.</p><div id="delete-folder-files" hidden><select id="delete-source-name" aria-label="Choose encrypted file to delete after opening"></select><button id="load-delete-source" type="button">Load selected file</button></div></div><div id="unlock-panel" class="access-panel" hidden><div class="panel-top"><span id="package-mode">ENCRYPTED CORRESPONDENCE</span></div><label class="file-label file-input-label">Choose the conversation key ↗<input id="decoder-key-upload" type="file" accept=".vkey,.veilkey,application/json" hidden></label><p id="decoder-key-status" class="helper">Key file required</p><label for="open-passphrase">Message passphrase</label><input id="open-passphrase" type="password" autocomplete="off" minlength="12" maxlength="1024" placeholder="Enter the original passphrase"><button id="unlock" class="primary wide" type="button">Prepare to reveal <span>↗</span></button><p id="unlock-help" class="helper"></p></div><div id="file-result" class="access-panel" hidden><div class="eyebrow">FILE DECRYPTED / IN MEMORY</div><h3 id="decrypted-name"></h3><p class="helper">Saving creates a readable copy on your device. This file uses offline sharing and has no enforceable expiry.</p><a id="save-file" class="primary wide">Save decrypted file ↓</a><button class="exit text-button">Clean & exit</button></div><div id="reveal-panel" hidden><div class="reader-toolbar"><span id="reader-state">READY / HOLD TO REVEAL</span><span id="remaining">—</span></div><div id="reveal-surface" tabindex="0" role="button" aria-label="Hold and move to reveal your message"><canvas id="reveal-canvas" width="960" height="700"></canvas><div id="reader-instruction"><span>◎</span><strong>Hold to find the words.</strong><small>Move your finger. Release to cover.<br>The timer begins on your first hold.</small></div></div><div class="progress-track"><div id="progress"></div></div><p class="helper">Only the circle beneath your finger reveals text. The clock keeps moving when you release.</p></div><div class="session-footer"><span><span id="reader-retention">ONE MOMENT. ONE OPENING.</span></span><button class="exit">Clean & exit ↗</button></div></div></section>
+</main><footer><span>STILL / THE ART OF PASSING THINGS ON</span><span id="footer-mode">A DIFFERENT KIND OF CORRESPONDENCE.</span></footer><div id="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
